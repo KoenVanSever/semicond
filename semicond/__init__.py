@@ -1,5 +1,5 @@
 from importlib.metadata import distribution
-__version__ = distribution("kvslib").version
+__version__ = distribution("semicond").version
 
 def ensure_list(obj) -> list:
     """
