@@ -1,0 +1,18 @@
+[project]
+name = "semicond"
+version = "0.0.0"
+description = "Support functions for semiconductor field."
+readme = "README.md"
+url = "https://github.com/KoenVanSever/semicond"
+authors = [
+  { name = "Koen Van Sever", email = "koen.vansever@gmail.com" },
+]
+dependencies = [
+    "matplotlib >= 3.4",
+    "pandas >= 1.5",
+    "seaborn >= 0.12",
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
