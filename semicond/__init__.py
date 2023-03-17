@@ -25,7 +25,7 @@ def ensure_list(obj) -> list:
         return [obj]
     
 from .stats import benard_estimator, estimator
-from .mplextension import WaferSize, wafermap
+from .mplextension import WaferSize, wafermap, in_wafer_like
     
 __all__ = [
     "ensure_list",
@@ -35,4 +35,5 @@ __all__ = [
     # mplextension
     "WaferSize",
     "wafermap",
+    "in_wafer_like",
 ]
