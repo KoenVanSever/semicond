@@ -1,6 +1,6 @@
 [project]
 name = "semicond"
-version = "0.0.0"
+version = "0.1.0"
 description = "Support functions for semiconductor field."
 readme = "README.md"
 authors = [
