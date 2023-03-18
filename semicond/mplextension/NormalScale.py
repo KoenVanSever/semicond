@@ -31,8 +31,8 @@ class NormalScale(ScaleBase):
     def limit_range_for_scale(self, vmin, vmax, minpos):
         """Limit domain to 0-100 (excluding boundaries)."""
         return (
-            self._fallback_margin if vmin <= 0 else vmin,
-            (100 - self._fallback_margin) if vmax >= 100 else vmax
+            max(self._fallback_margin, vmin),
+            min(100 - self._fallback_margin, vmax),
         )
 
     class NormalTransform(Transform):
@@ -49,7 +49,7 @@ class NormalScale(ScaleBase):
             if a.size == 0:
                 return np.array([])
 
-            masked = ma.masked_where((a <= 0) | (a >= 100), a)
+            masked = ma.masked_where((a < 0) | (a > 100), a)
             return self._transform(masked)
 
         def inverted(self):

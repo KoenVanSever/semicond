@@ -1,9 +1,8 @@
 [project]
 name = "semicond"
-version = "0.0.0"
+version = "0.1.0"
 description = "Support functions for semiconductor field."
 readme = "README.md"
-url = "https://github.com/KoenVanSever/semicond"
 authors = [
   { name = "Koen Van Sever", email = "koen.vansever@gmail.com" },
 ]
@@ -11,6 +10,19 @@ dependencies = [
     "matplotlib >= 3.4",
     "pandas >= 1.5",
     "seaborn >= 0.12",
+]
+
+[project.optional-dependencies]
+test = [
+  "pytest",
+]
+dev = [
+  "twine",
+  "build",
+]
+docs = [
+  "sphinx",
+  "pydata-sphinx-theme",
 ]
 
 [build-system]
