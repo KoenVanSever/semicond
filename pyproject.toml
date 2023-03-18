@@ -14,7 +14,15 @@ dependencies = [
 
 [project.optional-dependencies]
 test = [
-  "pytest"
+  "pytest",
+]
+dev = [
+  "twine",
+  "build",
+]
+docs = [
+  "sphinx",
+  "pydata-sphinx-theme",
 ]
 
 [build-system]

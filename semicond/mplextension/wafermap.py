@@ -1,3 +1,5 @@
+"""Module for plotting wafermaps."""
+
 from __future__ import annotations
 
 import matplotlib as mpl
@@ -11,11 +13,10 @@ from numbers import Real
 from enum import IntEnum
 from matplotlib.patches import Ellipse
 
-import math
 from typing import Literal
 
 class WaferSize(IntEnum):
-    """Enum for standard wafer sizes."""
+    """Enum for standard wafer sizes (in mm)."""
     W300 = 300
     W200 = 200
     W150 = 150
@@ -50,7 +51,7 @@ def wafermap(
 
     Parameters
     ----------
-    data : pd.DataFrame
+    data : DataFrame
         Data to plot
     diesize : tuple[float, float]
         Size of one die in mm (x-size, y-size)
@@ -60,13 +61,13 @@ def wafermap(
         Center of the center die (0, 0) in mm (kind = "indexed" only)
     kind : {"indexed", "mm"}, default "indexed"
         Kind of plot to do
-    ax : mpl.axes.Axes, default None
+    ax : Axes, default None
         Axes to plot on
-    mask : pd.DataFrame, default None
+    mask : DataFrame, default None
         Mask that can be used to narrow the amount of dies to show
     cmap : default None
         Automatic colormap is used if None, can be overwritten
-    wafersize : WaferSize, default WaferSize.W300
+    wafersize : :class:`WaferSize`, default WaferSize.W300
         Size of the wafer
     linewidth : float, default 0.5
         Width of the lines seperating the dies (kind = "indexed" only)
@@ -80,7 +81,7 @@ def wafermap(
 
     See Also
     --------
-    `sns.heatmap`
+    heatmap :
         Seaborn's heatmap function 
 
     Examples
@@ -178,6 +179,25 @@ def in_wafer_like(
     center : tuple[float, float] = (0, 0),
     wafersize : WaferSize = WaferSize.W300
 ) -> pd.DataFrame:
+    """
+    Returns a boolean mask for every valid die that is with the wafer (not crossing the boundary).
+
+    Parameters
+    ----------
+    df : DataFrame
+        Dataframe with the die index as index and columns do determine output shape
+    diesize : tuple[float, float]
+        Size of the dies in mm
+    center : tuple[float, float], default (0, 0)
+        Center of the wafer in mm
+    wafersize : :class:`WaferSize`, default WaferSize.W300
+        Size of the wafer
+
+    Returns
+    -------
+    DataFrame
+        Boolean mask with the same shape as the input DataFrame
+    """
     data = df.copy()
     dsx, dsy = diesize
     xc, yc = center
