@@ -25,7 +25,7 @@ def ensure_list(obj) -> list:
         return [obj]
     
 from .stats import benard_estimator, estimator
-from .mplextension import WaferSize, wafermap, in_wafer_like
+from .mplextension import WaferSize, wafermap, in_wafer_like, normplot
     
 __all__ = [
     "ensure_list",
@@ -33,6 +33,7 @@ __all__ = [
     "benard_estimator",
     "estimator",
     # mplextension
+    "normplot",
     "WaferSize",
     "wafermap",
     "in_wafer_like",
